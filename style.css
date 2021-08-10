@@ -1,53 +1,54 @@
 .title {
-    font-family: "Montserrat";
-    text-align: center;
-    font-size: 22px;
-    margin-top: 200px;
-    margin-bottom: 110px;
+  font-family: "Montserrat";
+  text-align: center;
+  font-size: 22px;
+  margin-top: 200px;
+  margin-bottom: 110px;
 }
 
 /* стили масонри */
 
-
 #MSRY {
-    /*background: red;*/
+  /*background: red;*/
 }
 
 .msry_wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
-    /*justify-content: center;*/
-    padding: 20px;
-    max-width: 1500px;
-    margin: auto;
-    padding-bottom: 10px;
-    overflow: hidden;
+  /*justify-content: center;*/
+  padding: 20px;
+  max-width: 1500px;
+  margin: auto;
+  padding-bottom: 10px;
+  overflow: hidden;
 }
 
 .msry_wrapper__imgContainer {
-    /*background: green;*/
-    /*width: calc(100% / 3 - 10px - 15px - 15px);*/
-    width: calc((100% - 10px - 10px - 10px) / 3);
-    /*width: 33.333%;*/
-    /*margin: 5px;*/
-    flex-grow: 0;
+  /*background: green;*/
+  /*width: calc(100% / 3 - 10px - 15px - 15px);*/
+  width: calc((100% - 10px - 10px - 10px) / 3);
+  /*width: 33.333%;*/
+  /*margin: 5px;*/
+  flex-grow: 0;
 }
-
 
 .msry_wrapper__imgContainer > img {
-    width: 100%;
-    margin-bottom: 10px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    transition: all 2s ease;
-    position: relative;
-    top: 0;
-    display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  transition: all 2s ease;
+  position: relative;
+  top: 0;
+  display: block;
 }
 
-.msry_wrapper__imgContainer > img:hover {
-    top: 50px;
+/* for delete. Just visual effect. */
+
+.msry_wrapper:hover > .msry_wrapper__imgContainer > img {
+  margin-bottom: 200px;
+  opacity: 0;
 }
