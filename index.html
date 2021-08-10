@@ -71,6 +71,21 @@
 </div>
 <script src="script.js"></script>
 
+<script>
+  let msry = new MSRY({
+    rootSelector: '#MSRY',
+    settings: {
+      columnsCount: 4,
+    },
+    onScreenWidth: {
+      1500: {'columnsCount': 4},
+      1160: {'columnsCount': 3},
+      850: {'columnsCount': 2},
+      600: {'columnsCount': 1}
+    }
+  });
+</script>
+
 <style>
     /* reset styles */
     body {

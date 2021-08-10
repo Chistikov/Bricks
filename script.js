@@ -49,7 +49,7 @@ function MSRY(config) {
       for (let i = 0; i < columnsCount; i++) {
         let wrapper = document.createElement('div');
         wrapper.classList.add('msry_wrapper__imgContainer');
-        let space = `- ${columnsCount * 10}px)`;
+        let space = `- ${(columnsCount - 1) * 10}px)`;
         wrapper.style.width = `calc((100% ${columnsCount > 1 ? space : ""} / ${columnsCount})`
         this.rootElement.appendChild(wrapper);
       }
@@ -98,16 +98,3 @@ function MSRY(config) {
 
   this.init();
 }
-
-let msry = new MSRY({
-  rootSelector: '#MSRY',
-  settings: {
-    columnsCount: 4,
-  },
-  onScreenWidth: {
-    1500: {'columnsCount': 4},
-    1160: {'columnsCount': 3},
-    850: {'columnsCount': 2},
-    600: {'columnsCount': 1}
-  }
-});
