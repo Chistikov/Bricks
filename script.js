@@ -25,8 +25,6 @@ function MSRY(config) {
     window.addEventListener("resize", onResizeWindowHandler.bind(this));
     pasteColumnsAndImages.call(this);
 
-    console.log(this.imagesArr);
-
     function onResizeWindowHandler() {
       this.deleteChildrenFromParent(this.rootElement);
       pasteColumnsAndImages.call(this);
@@ -43,8 +41,6 @@ function MSRY(config) {
         columnsCount = this.config.onScreenWidth[ap]?.columnsCount || this.config.settings.columnsCount;
       }
 
-      console.log(ap, columnsCount);
-
       // creating containers
       for (let i = 0; i < columnsCount; i++) {
         let wrapper = document.createElement("div");
@@ -55,16 +51,26 @@ function MSRY(config) {
       }
 
       // pasting images into containers
-      // let containerWithMinHeight = null;
-      let pos = 0;
       Array.from(this.imagesArr).forEach((image, index) => {
-        // this.rootElement.children[index % this.imagesArr.length].appendChild(image)
-        this.rootElement.children[pos].appendChild(image);
+        let containerWithMinHeight = null;
 
-        pos++;
-        if (pos === this.rootElement.children.length) {
-          pos = 0;
+        for (let container of this.rootElement.children) {
+          if (container.children.length === 0) {
+            containerWithMinHeight = container;
+            break;
+          } else {
+            let minContainerHeight = Infinity;
+
+            Array.from(this.rootElement.children).forEach((item) => {
+              if (item.offsetHeight < minContainerHeight) {
+                minContainerHeight = item.offsetHeight;
+                containerWithMinHeight = item;
+              }
+            });
+          }
         }
+
+        containerWithMinHeight.appendChild(image);
       });
     }
 
