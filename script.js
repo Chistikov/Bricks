@@ -25,7 +25,7 @@ Bricks.prototype.init = function (config) {
 
   this.itemsArr = document.querySelectorAll(`${this.config.rootSelector} > *`);
   this.deleteChildrenFromParent(this.rootElement);
-  this.pasteColumnsAndImages.call(this);
+  this.pasteColumnsAndImages();
 
   this.addHandlers();
 };
@@ -60,7 +60,7 @@ Bricks.prototype.deleteChildrenFromParent = function (parentElement) {
 
 Bricks.prototype.pasteColumnsAndImages = function () {
   let columnsCount;
-  let ap = this.getAppropriateWidth.call(this);
+  let ap = this.getAppropriateWidth();
 
   // counting containers
   if (ap === "default") {
@@ -107,6 +107,6 @@ Bricks.prototype.addHandlers = function () {
 
   function onResizeWindowHandler() {
     this.deleteChildrenFromParent(this.rootElement);
-    this.pasteColumnsAndImages.call(this);
+    this.pasteColumnsAndImages();
   }
 };
