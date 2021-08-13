@@ -11,7 +11,7 @@
   </head>
   <body>
     <div class="title">masonry</div>
-    <div id="MSRY" class="msry_wrapper">
+    <div id="bricks" class="bricks_wrapper">
       <img src="img/1.jpeg" />
       <img src="img/2.jpg" />
       <img src="img/3.jpg" />
@@ -54,31 +54,12 @@
       <img src="img/4.jpg" />
       <img src="img/5.jpg" />
       <img src="img/6.jpg" />
-
-      <!--  <div class="msry_wrapper__imgContainer msry_wrapper__imgContainer1">-->
-      <!--    <img src="img/1.jpeg">-->
-      <!--    <img src="img/3.jpg">-->
-      <!--    <img src="img/4.jpg">-->
-      <!--    <img src="img/6.jpg">-->
-      <!--  </div>-->
-      <!--  <div class="msry_wrapper__imgContainer msry_wrapper__imgContainer2">-->
-
-      <!--    <img src="img/2.jpg">-->
-      <!--    <img src="img/3.jpg">-->
-      <!--    <img src="img/4.jpg">-->
-      <!--    <img src="img/5.jpg">-->
-      <!--  </div>-->
-      <!--  <div class="msry_wrapper__imgContainer msry_wrapper__imgContainer3">-->
-      <!--    <img src="img/1.jpeg">-->
-      <!--    <img src="img/5.jpg">-->
-      <!--    <img src="img/6.jpg">-->
-      <!--  </div>-->
     </div>
     <script src="script.js"></script>
 
     <script>
-      let msry = new MSRY({
-        rootSelector: "#MSRY",
+      let bricks = new Bricks({
+        rootSelector: "#bricks",
         settings: {
           columnsCount: 4,
         },
@@ -89,13 +70,22 @@
           600: { columnsCount: 1 },
         },
       });
+
+      console.log(bricks);
     </script>
 
     <style>
-      /* reset styles */
       body {
         padding: 0;
         margin: 0;
+      }
+
+      .title {
+        font-family: "Montserrat";
+        text-align: center;
+        font-size: 22px;
+        margin-top: 200px;
+        margin-bottom: 110px;
       }
     </style>
   </body>

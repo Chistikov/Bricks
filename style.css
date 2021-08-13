@@ -1,24 +1,8 @@
-.title {
-  font-family: "Montserrat";
-  text-align: center;
-  font-size: 22px;
-  margin-top: 200px;
-  margin-bottom: 110px;
-}
-
-/* стили масонри */
-
-#MSRY {
-  /*background: red;*/
-}
-
-.msry_wrapper {
+.bricks_wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-
-  /*justify-content: center;*/
   padding: 20px;
   max-width: 1500px;
   margin: auto;
@@ -26,16 +10,7 @@
   overflow: hidden;
 }
 
-.msry_wrapper__imgContainer {
-  /*background: green;*/
-  /*width: calc(100% / 3 - 10px - 15px - 15px);*/
-  width: calc((100% - 10px - 10px - 10px) / 3);
-  /*width: 33.333%;*/
-  /*margin: 5px;*/
-  flex-grow: 0;
-}
-
-.msry_wrapper__imgContainer > img {
+.bricks_wrapper__itemsContainer > * {
   width: 100%;
   margin-bottom: 10px;
   -webkit-border-radius: 3px;
@@ -45,11 +20,4 @@
   position: relative;
   top: 0;
   display: block;
-}
-
-/* for delete. Just visual effect. */
-
-.msry_wrapper:hover > .msry_wrapper__imgContainer > img {
-  margin-bottom: 200px;
-  opacity: 0;
 }
