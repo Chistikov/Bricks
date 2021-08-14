@@ -12,13 +12,11 @@
 
 .bricks_wrapper__itemsContainer > * {
   width: 100%;
-  margin-bottom: 10px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   transition: top 2s ease, opacity 2s ease;
   display: block;
-
   position: relative;
   top: 0;
   opacity: 1;

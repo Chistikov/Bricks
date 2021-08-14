@@ -1,4 +1,3 @@
-debugger;
 function Bricks(config) {
   let _this = this;
   window.Bricks = this;
@@ -11,6 +10,7 @@ Bricks.prototype.init = function (config) {
     rootSelector: "#bricks",
     settings: {
       columnsCount: 1,
+      gap: 10,
       prettyEntry: {
         // TODO: added transition to item
         delay: 50,
@@ -91,7 +91,7 @@ Bricks.prototype.pasteColumnsAndImages = function () {
   for (let i = 0; i < columnsCount; i++) {
     let wrapper = document.createElement("div");
     wrapper.classList.add("bricks_wrapper__itemsContainer");
-    let space = `- ${(columnsCount - 1) * 10}px)`;
+    let space = `- ${(columnsCount - 1) * this.config.settings.gap}px)`;
     wrapper.style.width = `calc((100% ${columnsCount > 1 ? space : ""} / ${columnsCount})`;
     this.rootElement.appendChild(wrapper);
   }
@@ -116,6 +116,7 @@ Bricks.prototype.pasteColumnsAndImages = function () {
       }
     }
 
+    image.style.marginBottom = this.config.settings.gap + "px";
     containerWithMinHeight.appendChild(image);
   });
 };
