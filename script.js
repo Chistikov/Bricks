@@ -1,3 +1,4 @@
+debugger;
 function Bricks(config) {
   let _this = this;
   window.Bricks = this;
@@ -10,6 +11,12 @@ Bricks.prototype.init = function (config) {
     rootSelector: "#bricks",
     settings: {
       columnsCount: 1,
+      prettyEntry: {
+        // TODO: added transition to item
+        delay: 50,
+        speed: 250,
+        moveDistance: 100,
+      },
     },
     onScreenWidth: {},
   };
@@ -23,9 +30,20 @@ Bricks.prototype.init = function (config) {
     throw new Error("Wrong selector. Element not found.");
   }
 
+  // fetching items and adding class to each item
   this.itemsArr = document.querySelectorAll(`${this.config.rootSelector} > *`);
+  if (this.prettyEntryIsEnable()) {
+    Array.from(this.itemsArr).forEach((item) => {
+      item.classList.add("bricks_wrapper__itemsIsHidden");
+
+      let moveDistance = this.config.settings.prettyEntry?.moveDistance || 0;
+      item.style.top = moveDistance + "px";
+    });
+  }
+
   this.deleteChildrenFromParent(this.rootElement);
   this.pasteColumnsAndImages();
+  this.showItemsByCondition();
 
   this.addHandlers();
 };
@@ -104,9 +122,32 @@ Bricks.prototype.pasteColumnsAndImages = function () {
 
 Bricks.prototype.addHandlers = function () {
   window.addEventListener("resize", onResizeWindowHandler.bind(this));
+  if (this.prettyEntryIsEnable()) {
+    window.addEventListener("load", this.showItemsByCondition.bind(this));
+    window.addEventListener("scroll", this.showItemsByCondition.bind(this));
+  }
 
   function onResizeWindowHandler() {
     this.deleteChildrenFromParent(this.rootElement);
     this.pasteColumnsAndImages();
   }
+};
+
+Bricks.prototype.prettyEntryIsEnable = function () {
+  return !!Object.keys(this.config.settings.prettyEntry).length;
+};
+
+Bricks.prototype.showItemsByCondition = function () {
+  Array.from(this.itemsArr).forEach((item) => {
+    if (
+      document.documentElement.scrollTop + document.documentElement.clientHeight >
+      document.documentElement.scrollTop +
+        item.getBoundingClientRect().top -
+        this.config.settings.prettyEntry.moveDistance +
+        item.getBoundingClientRect().height
+    ) {
+      item.classList.remove("bricks_wrapper__itemsIsHidden");
+      item.style.top = 0 + "px";
+    }
+  });
 };
