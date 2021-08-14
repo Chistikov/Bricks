@@ -1,3 +1,4 @@
+debugger;
 function Bricks(config) {
   let _this = this;
   window.Bricks = this;
