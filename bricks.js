@@ -28,6 +28,8 @@ Bricks.prototype.init = function (config) {
   this.rootElement = document.querySelector(this.config.rootSelector);
   if (!this.rootElement) {
     throw new Error("Wrong selector. Element not found.");
+  } else {
+    this.rootElement.classList.add("bricks_wrapper");
   }
 
   // fetching items and adding class to each item
